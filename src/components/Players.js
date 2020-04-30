@@ -39,14 +39,14 @@ export default  class Players extends Component{
             list = {players.map((player) => player.name)}
             {...this.props} //passing all the props that match location and history to my Sidebar comp
             />
-            {loading === false && location.pathname === 'players' //the user did not select the player yet
+            {loading === false && location.pathname === '/players' //the user did not select the player yet
             ? <div className ='sidebar-instruction'>Select a Player </div>
             :null}
-    <Route  path = {`${match.url}/:playerId`} render = {({match}) => {
+    <Route  path = {`${match.url}/:playerId`} render = {({match}) => { //`the url up until this point/:playername(Id)` 
         if(loading === true) return null;
-            const{ //destructuring
-                name, position, teamId,number, avatar, apg, ppg, rpg, spg 
-                } = players.find((player) => slug(player.name) === match.params.playerId)
+            const{ //destructuring (dummy vars)
+                name, position, teamId, number, avatar, apg, ppg, rpg, spg 
+                } = players.find((player) => slug(player.name) === match.params.playerId) //slug == snakecase pl.name eqaul the same url and playername(Id) in this case
             return (  // UI
                 <div className = 'panel'>
                     <img className = 'avatar' src = {`${avatar}`} alt = {`${name}'s avatar`}/>
@@ -61,8 +61,16 @@ export default  class Players extends Component{
                             </Link>
                             </div>
                         </li>
+                        <li>Position<div>{position}</div></li>
+                        <li>PPG<div>{ppg}</div></li>
                         </ul>
-                        </div>
+                        <ul className ='info-list'> 
+                        {/*  if not in div number will be displays in line  */}
+                        <li>APG<div>{apg}</div></li> 
+                        <li>RPG<div>{rpg}</div></li>
+                        <li>SPG<div>{spg}</div></li>
+                        </ul>
+                        </div>   
                     </div>
                     )
                 }}

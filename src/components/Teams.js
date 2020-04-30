@@ -18,7 +18,7 @@ export default class Teams extends Component{
         .then((teamNames) =>{
             this.setState((currentState) =>({
                 loading:false,
-                teamNames
+                teamNames,
             }))
     })
 }
@@ -54,7 +54,8 @@ export default class Teams extends Component{
                         </ul>
                         <Link className = 'center btn-main' 
                             to={`/${match.params.teamId}`}>
-                            {team.name}Team page</Link>
+                            {team.name}Team Page
+                            </Link>
                         
                         </div>}
                     </Team>

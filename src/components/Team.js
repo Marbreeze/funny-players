@@ -21,15 +21,14 @@ export default class Team extends Component{
     }
 
     fetchTeam = (id) =>{
-        this.setState((currentState) =>({
+        this.setState(() =>({
             team:null
     }))
-    
     getTeam(id)
     .then((team) =>this.setState((currentState) =>({team})))
     }
 
     render(){
-        return this.props.children(this.state.team)
+        return (this.props.children(this.state.team))
     }
 }

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import{Link,Route} from 'react-router-dom';
 import slug from 'slug';
 
+//generic component its gonna be used when players are fetched
+//teams are fetched, article as well is a left column side-bar
 
 Sidebar.propTypes = {
     title:PropTypes.string.isRequired,
@@ -14,7 +16,7 @@ Sidebar.propTypes = {
 function CustomLink({to, children}){ //passing 'to' as obj can have propriety as: pathname,search,hash,state
     return(
         <Route              //use route to get acces to match,which will tell if app's location matches the to.pathname
-                            //if it does the liost will be bold if does't normal
+                            //if it does match name in list will be bold if does't, - normal
         path ={to.pathname} //a string representing the path to link to. '/examplename'
         children={({match}) => (
             <li style = {{listStyleType:'none',fontWeight:match ?'bold' : 'normal'}}>
@@ -24,10 +26,11 @@ function CustomLink({to, children}){ //passing 'to' as obj can have propriety as
         />
     )
 }
-export default function Sidebar({title, list,loading,location,match}){
+export default function Sidebar({title, list, loading,location,match}){
     return loading === true 
     ?<h1>Loading</h1>
-    :<div>
+    :<div> 
+        {/* esle display a div with all the nams */}
         <h3 className = 'header'>{title}</h3>
         <ul className ='sidebar-list'>
     {list.map((item) =>(
