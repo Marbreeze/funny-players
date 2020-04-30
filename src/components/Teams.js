@@ -4,6 +4,7 @@ import SideBar from './Sidebar';
 import { getTeamNames} from '../api';
 import TeamLogo from './TeamLogo'
 import Team from './Team'
+import Loading from './Loading'
 //component that needs to be rendered whenever app route matches the location
 
 
@@ -43,7 +44,7 @@ export default class Teams extends Component{
         {/* crearte a component that is gonna fetch data and return data */}
                     <Team id = {match.params.teamId}>
                         {(team) => (team === null)
-                        ?<h1>Loading</h1>
+                        ?<Loading />
                         :<div style = {{width:'100%'}}>
                         <TeamLogo id = {team.id} className = 'center' />
                         <h1 className ='medium-header'>{team.name}</h1>
